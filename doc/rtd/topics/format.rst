@@ -196,6 +196,13 @@ Example
 
 Also this `blog`_ post offers another example for more advanced usage.
 
+Disabling User-Data
+===================
+
+Cloud-init can also be instructed to silently ignore any user-data. This can be
+a way to restrict users from passing arbitrary scripts to closed appliances.
+Setting ``allow_userdata: false`` in the configuration will disable user-data.
+
 .. [#] See your cloud provider for applicable user-data size limitations...
 .. _blog: http://foss-boss.blogspot.com/2011/01/advanced-cloud-init-custom-handlers.html
 .. vi: textwidth=78

@@ -56,8 +56,13 @@ root login is disabled, and root login opts are set to::
     no-port-forwarding,no-agent-forwarding,no-X11-forwarding
 
 Authorized keys for the default user/first user defined in ``users`` can be
-specified using `ssh_authorized_keys``. Keys should be specified as a list of
+specified using ``ssh_authorized_keys``. Keys should be specified as a list of
 public keys.
+
+Cloud providers usually provide mechanisms to pass ssh key pairs to login as
+the default user defined in ``users`` using public key authentication. This
+feature can be disabled in cloud-init by setting
+``allow_public_ssh_keys: false``.
 
 .. note::
     see the ``cc_set_passwords`` module documentation to enable/disable ssh
@@ -91,6 +96,7 @@ public keys.
     ssh_authorized_keys:
         - ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAGEA3FSyQwBI6Z+nCSjUU ...
         - ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEA3I7VUf2l5gSn5uavROsc5HRDpZ ...
+    allow_public_ssh_keys: <true/false>
     ssh_publish_hostkeys:
         enabled: <true/false> (Defaults to true)
         blacklist: <list of key types> (Defaults to [dsa])

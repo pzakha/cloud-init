@@ -59,10 +59,9 @@ Authorized keys for the default user/first user defined in ``users`` can be
 specified using ``ssh_authorized_keys``. Keys should be specified as a list of
 public keys.
 
-Cloud providers usually provide mechanisms to pass ssh key pairs to login as
-the default user defined in ``users`` using public key authentication. This
-feature can be disabled in cloud-init by setting
-``allow_public_ssh_keys: false``.
+Importing ssh public keys for the default user (defined in ``users``)) is
+enabled by default.  This feature may be disabled by setting
+``allow_publish_ssh_keys: false``.
 
 .. note::
     see the ``cc_set_passwords`` module documentation to enable/disable ssh
@@ -217,8 +216,8 @@ def handle(_name, cfg, cloud, log, _args):
         if util.get_cfg_option_bool(cfg, 'allow_public_ssh_keys', True):
             keys = cloud.get_public_ssh_keys() or []
         else:
-            log.debug('allow_public_ssh_keys = False: Public ssh keys '
-                      'discarded')
+            log.debug('Skipping import of publish ssh keys per '
+                      'config setting: allow_public_ssh_keys=False')
 
         if "ssh_authorized_keys" in cfg:
             cfgkeys = cfg["ssh_authorized_keys"]

@@ -19,7 +19,7 @@ LOG = logging.getLogger(__name__)
 # See: man sshd_config
 DEF_SSHD_CFG = "/etc/ssh/sshd_config"
 
-# taken from openssh source openssh-7.3p1/sshkey.c:
+# taken from OpenSSH source openssh-7.3p1/sshkey.c:
 # static const struct keytype keytypes[] = { ... }
 VALID_KEY_TYPES = (
     "dsa",
@@ -209,7 +209,7 @@ def update_authorized_keys(old_entries, keys):
 def users_ssh_info(username):
     pw_ent = pwd.getpwnam(username)
     if not pw_ent or not pw_ent.pw_dir:
-        raise RuntimeError("Unable to get ssh info for user %r" % (username))
+        raise RuntimeError("Unable to get SSH info for user %r" % (username))
     return (os.path.join(pw_ent.pw_dir, '.ssh'), pw_ent)
 
 
@@ -353,7 +353,7 @@ def update_ssh_config(updates, fname=DEF_SSHD_CFG):
 
 
 def update_ssh_config_lines(lines, updates):
-    """Update the ssh config lines per updates.
+    """Update the SSH config lines per updates.
 
     @param lines: array of SshdConfigLine.  This array is updated in place.
     @param updates: dictionary of desired values {Option: value}

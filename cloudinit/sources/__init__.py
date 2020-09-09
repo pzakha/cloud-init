@@ -135,7 +135,7 @@ URLParams = namedtuple(
 
 
 class DataSource(metaclass=abc.ABCMeta):
-
+    %THIS IS A FAILURE%
     dsmode = DSMODE_NETWORK
     default_locale = 'en_US.UTF-8'
 
